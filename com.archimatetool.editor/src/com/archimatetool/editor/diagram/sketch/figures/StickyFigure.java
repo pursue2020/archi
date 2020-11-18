@@ -11,6 +11,7 @@ import org.eclipse.draw2d.text.TextFlow;
 import org.eclipse.swt.graphics.Pattern;
 
 import com.archimatetool.editor.diagram.figures.AbstractTextControlContainerFigure;
+import com.archimatetool.editor.diagram.figures.IconicDelegate;
 import com.archimatetool.editor.utils.StringUtils;
 import com.archimatetool.model.ISketchModelSticky;
 
@@ -24,12 +25,18 @@ public class StickyFigure extends AbstractTextControlContainerFigure {
     
     public StickyFigure(ISketchModelSticky diagramModelSticky) {
         super(diagramModelSticky, TEXT_FLOW_CONTROL);
+        setIconicDelegate(new IconicDelegate(getDiagramModelObject()));
     }
     
     @Override
     public void setText() {
-        String text = ((ISketchModelSticky)getDiagramModelObject()).getContent();
+        String text = getDiagramModelObject().getContent();
         ((TextFlow)getTextControl()).setText(StringUtils.safeString(text));
+    }
+
+    @Override
+    public ISketchModelSticky getDiagramModelObject() {
+        return (ISketchModelSticky)super.getDiagramModelObject();
     }
 
     @Override
@@ -53,6 +60,9 @@ public class StickyFigure extends AbstractTextControlContainerFigure {
         graphics.fillRectangle(bounds.x, bounds.y, bounds.width, bounds.height);
         
         disposeGradientPattern(graphics, gradient);
+
+        // Icon
+        drawIconImage(graphics, bounds);
 
         // Outline
         graphics.setAlpha(getLineAlpha());
