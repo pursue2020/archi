@@ -16,6 +16,7 @@ import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.graphics.Pattern;
 
 import com.archimatetool.editor.diagram.figures.AbstractTextControlContainerFigure;
+import com.archimatetool.editor.diagram.figures.IconicDelegate;
 import com.archimatetool.editor.diagram.figures.ToolTipFigure;
 import com.archimatetool.editor.ui.ColorFactory;
 import com.archimatetool.model.IDiagramModelGroup;
@@ -38,6 +39,8 @@ public class GroupFigure extends AbstractTextControlContainerFigure {
     
     public GroupFigure(IDiagramModelObject diagramModelObject) {
         super(diagramModelObject, TEXT_FLOW_CONTROL);
+        
+        setIconicDelegate(new IconicDelegate(getDiagramModelObject()));
     }
     
     @Override
@@ -97,6 +100,10 @@ public class GroupFigure extends AbstractTextControlContainerFigure {
             
             disposeGradientPattern(graphics, gradient);
             
+            // Icon
+            getIconicDelegate().setTopOffset(tabHeight);
+            drawIconImage(graphics, bounds);
+
             // Line
             graphics.setForegroundColor(getLineColor());
             graphics.setAlpha(getLineAlpha());
@@ -119,6 +126,10 @@ public class GroupFigure extends AbstractTextControlContainerFigure {
             
             disposeGradientPattern(graphics, gradient);
             
+            // Icon
+            getIconicDelegate().setTopOffset(0);
+            drawIconImage(graphics, bounds);
+
             // Line
             graphics.setForegroundColor(getLineColor());
             graphics.setAlpha(getLineAlpha());
