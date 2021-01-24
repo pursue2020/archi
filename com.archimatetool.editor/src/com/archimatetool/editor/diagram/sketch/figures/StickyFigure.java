@@ -11,7 +11,6 @@ import org.eclipse.draw2d.text.TextFlow;
 import org.eclipse.swt.graphics.Pattern;
 
 import com.archimatetool.editor.diagram.figures.AbstractTextControlContainerFigure;
-import com.archimatetool.editor.diagram.figures.IconicDelegate;
 import com.archimatetool.editor.utils.StringUtils;
 import com.archimatetool.model.ISketchModelSticky;
 
@@ -25,7 +24,6 @@ public class StickyFigure extends AbstractTextControlContainerFigure {
     
     public StickyFigure(ISketchModelSticky diagramModelSticky) {
         super(diagramModelSticky, TEXT_FLOW_CONTROL);
-        setIconicDelegate(new IconicDelegate(getDiagramModelObject()));
     }
     
     @Override

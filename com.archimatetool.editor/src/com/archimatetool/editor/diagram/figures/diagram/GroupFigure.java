@@ -16,7 +16,6 @@ import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.graphics.Pattern;
 
 import com.archimatetool.editor.diagram.figures.AbstractTextControlContainerFigure;
-import com.archimatetool.editor.diagram.figures.IconicDelegate;
 import com.archimatetool.editor.diagram.figures.ToolTipFigure;
 import com.archimatetool.editor.ui.ColorFactory;
 import com.archimatetool.model.IDiagramModelGroup;
@@ -39,8 +38,6 @@ public class GroupFigure extends AbstractTextControlContainerFigure {
     
     public GroupFigure(IDiagramModelObject diagramModelObject) {
         super(diagramModelObject, TEXT_FLOW_CONTROL);
-        
-        setIconicDelegate(new IconicDelegate(getDiagramModelObject()));
     }
     
     @Override
